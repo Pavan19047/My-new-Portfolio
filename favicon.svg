@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="terminalGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ff41;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#ff6b35;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#00ff41;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="screenGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#1a1a1a;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0a0a0a;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="64" height="64" rx="8" fill="url(#screenGlow)" stroke="url(#terminalGlow)" stroke-width="1"/>
+  
+  <!-- Terminal Screen -->
+  <rect x="6" y="6" width="52" height="52" rx="4" fill="#000000" stroke="#00ff41" stroke-width="1"/>
+  
+  <!-- Terminal Header Bar -->
+  <rect x="6" y="6" width="52" height="8" rx="4" fill="url(#terminalGlow)" opacity="0.8"/>
+  
+  <!-- Terminal Dots -->
+  <circle cx="12" cy="10" r="1.5" fill="#ff0000"/>
+  <circle cx="18" cy="10" r="1.5" fill="#ffff00"/>
+  <circle cx="24" cy="10" r="1.5" fill="#00ff00"/>
+  
+  <!-- Command Prompt -->
+  <text x="10" y="24" font-family="monospace" font-size="6" fill="#00ff41" filter="url(#glow)">PAVAN.EXE</text>
+  
+  <!-- Cursor -->
+  <rect x="10" y="28" width="8" height="1" fill="#00ff41" filter="url(#glow)">
+    <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+  </rect>
+  
+  <!-- Terminal Lines -->
+  <rect x="10" y="34" width="16" height="1" fill="#00ff41" opacity="0.6"/>
+  <rect x="10" y="38" width="12" height="1" fill="#00ff41" opacity="0.4"/>
+  <rect x="10" y="42" width="20" height="1" fill="#00ff41" opacity="0.3"/>
+  
+  <!-- Matrix Effect -->
+  <text x="35" y="26" font-family="monospace" font-size="4" fill="#00ff41" opacity="0.7">1</text>
+  <text x="40" y="30" font-family="monospace" font-size="4" fill="#00ff41" opacity="0.5">0</text>
+  <text x="45" y="34" font-family="monospace" font-size="4" fill="#00ff41" opacity="0.6">1</text>
+  <text x="50" y="38" font-family="monospace" font-size="4" fill="#00ff41" opacity="0.4">1</text>
+  <text x="38" y="42" font-family="monospace" font-size="4" fill="#00ff41" opacity="0.3">0</text>
+  <text x="43" y="46" font-family="monospace" font-size="4" fill="#00ff41" opacity="0.5">1</text>
+  
+  <!-- Glow Effect -->
+  <rect x="6" y="6" width="52" height="52" rx="4" fill="none" stroke="#00ff41" stroke-width="0.5" opacity="0.3" filter="url(#glow)"/>
+</svg>
