@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PAVAN.EXE - ROBOTICS ENGINEER | SYSTEM BOOT</title>
+    <title>PAVAN.EXE - MERN STACK DEVELOPER | SYSTEM BOOT</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Share+Tech+Mono:wght@400&display=swap" rel="stylesheet">
     <style>
@@ -25,6 +25,9 @@
             --cursor-color: #00ff00;
             --error-red: #ff0000;
             --warning-yellow: #ffff00;
+            --neon-blue: #00d4ff;
+            --neon-purple: #b400ff;
+            --neon-pink: #ff0080;
         }
 
         body {
@@ -35,6 +38,471 @@
             overflow-x: hidden;
             position: relative;
             font-size: 14px;
+        }
+
+        /* Holographic Background Effect */
+        .holographic-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -3;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 128, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(0, 255, 0, 0.1) 0%, transparent 50%);
+            animation: holographic-shift 8s ease-in-out infinite;
+        }
+
+        @keyframes holographic-shift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(180deg); }
+        }
+
+        /* 3D Floating Terminal Icons */
+        .floating-icons {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-icon {
+            position: absolute;
+            font-size: 24px;
+            color: var(--terminal-green);
+            opacity: 0.2;
+            animation: float-3d 15s ease-in-out infinite;
+            text-shadow: 0 0 10px currentColor;
+        }
+
+        @keyframes float-3d {
+            0%, 100% { 
+                transform: translateY(0) translateX(0) rotateX(0deg) rotateY(0deg);
+                opacity: 0.2;
+            }
+            25% { 
+                transform: translateY(-30px) translateX(20px) rotateX(15deg) rotateY(15deg);
+                opacity: 0.4;
+            }
+            50% { 
+                transform: translateY(-60px) translateX(-20px) rotateX(30deg) rotateY(30deg);
+                opacity: 0.6;
+            }
+            75% { 
+                transform: translateY(-30px) translateX(30px) rotateX(15deg) rotateY(-15deg);
+                opacity: 0.4;
+            }
+        }
+
+        /* AI Assistant Chat Widget */
+        .ai-assistant {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            height: 60px;
+            background: var(--bg-black);
+            border: 2px solid var(--terminal-green);
+            border-radius: 10px;
+            z-index: 1001;
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+
+        .ai-assistant.expanded {
+            height: 400px;
+        }
+
+        .ai-header {
+            background: var(--terminal-green);
+            color: var(--bg-black);
+            padding: 0.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-family: 'Share Tech Mono', monospace;
+        }
+
+        .ai-status {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--terminal-green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        .ai-chat {
+            height: calc(100% - 60px);
+            padding: 1rem;
+            display: none;
+            flex-direction: column;
+            gap: 0.5rem;
+            font-size: 12px;
+            overflow-y: auto;
+        }
+
+        .ai-assistant.expanded .ai-chat {
+            display: flex;
+        }
+
+        .chat-message {
+            padding: 0.5rem;
+            border-left: 2px solid var(--terminal-green);
+            margin-left: 1rem;
+        }
+
+        /* Voice Recognition Indicator */
+        .voice-indicator {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100px;
+            height: 100px;
+            border: 3px solid var(--terminal-green);
+            border-radius: 50%;
+            background: rgba(0, 255, 0, 0.1);
+            display: none;
+            z-index: 2000;
+            animation: voice-pulse 1s ease-in-out infinite;
+        }
+
+        @keyframes voice-pulse {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.2); }
+        }
+
+        /* Neural Network Animation */
+        .neural-network {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -2;
+            opacity: 0.1;
+        }
+
+        .neuron {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: var(--terminal-green);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--terminal-green);
+        }
+
+        .connection {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(90deg, var(--terminal-green), transparent);
+            transform-origin: left center;
+            animation: data-flow 3s linear infinite;
+        }
+
+        @keyframes data-flow {
+            0% { opacity: 0; transform: scaleX(0); }
+            50% { opacity: 1; transform: scaleX(1); }
+            100% { opacity: 0; transform: scaleX(1); }
+        }
+
+        /* Interactive Code Editor */
+        .live-code-editor {
+            position: fixed;
+            top: 80px;
+            right: -420px;
+            width: 400px;
+            height: 500px;
+            background: var(--bg-black);
+            border: 2px solid var(--terminal-green);
+            border-radius: 5px;
+            z-index: 1002;
+            transition: right 0.5s ease;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.3);
+        }
+
+        .live-code-editor.active {
+            right: 20px;
+        }
+
+        .code-header {
+            background: var(--terminal-green);
+            color: var(--bg-black);
+            padding: 0.75rem 1rem;
+            font-family: 'Share Tech Mono', monospace;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .code-close-btn {
+            background: none;
+            border: none;
+            color: inherit;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            padding: 0;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .code-close-btn:hover {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 3px;
+        }
+
+        .code-content {
+            padding: 1rem;
+            height: calc(100% - 60px);
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .code-input {
+            width: 100%;
+            height: 300px;
+            background: var(--bg-black);
+            border: 1px solid var(--terminal-green);
+            color: var(--terminal-green);
+            font-family: 'Courier Prime', monospace;
+            padding: 1rem;
+            resize: none;
+            border-radius: 3px;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .code-input:focus {
+            outline: none;
+            border-color: var(--terminal-amber);
+            box-shadow: 0 0 10px rgba(255, 176, 0, 0.3);
+        }
+
+        .code-actions {
+            display: flex;
+            gap: 0.5rem;
+            justify-content: flex-end;
+        }
+
+        .code-execute-btn {
+            background: var(--gray-dark);
+            color: var(--terminal-green);
+            border: 2px solid var(--terminal-green);
+            padding: 0.5rem 1rem;
+            font-family: 'Share Tech Mono', monospace;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            border-radius: 3px;
+            min-width: 80px;
+        }
+
+        .code-execute-btn:hover {
+            background: var(--terminal-green);
+            color: var(--bg-black);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 255, 0, 0.3);
+        }
+
+        .code-execute-btn.clear-btn {
+            border-color: var(--warning-yellow);
+            color: var(--warning-yellow);
+        }
+
+        .code-execute-btn.clear-btn:hover {
+            background: var(--warning-yellow);
+            color: var(--bg-black);
+            box-shadow: 0 4px 8px rgba(255, 255, 0, 0.3);
+        }
+
+        .code-output {
+            background: var(--gray-dark);
+            border: 1px solid var(--terminal-green);
+            padding: 1rem;
+            font-family: 'Courier Prime', monospace;
+            font-size: 12px;
+            color: var(--terminal-green);
+            max-height: 100px;
+            overflow-y: auto;
+            border-radius: 3px;
+        }
+
+        /* Skill Radar Chart */
+        .skill-radar {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            margin: 2rem auto;
+        }
+
+        .radar-svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Interactive Terminal Commands */
+        .interactive-terminal {
+            background: var(--bg-black);
+            border: 2px solid var(--terminal-green);
+            margin: 2rem 0;
+            min-height: 200px;
+        }
+
+        .terminal-input {
+            background: transparent;
+            border: none;
+            color: var(--terminal-green);
+            font-family: 'Courier Prime', monospace;
+            width: 100%;
+            outline: none;
+            padding: 0.5rem;
+        }
+
+        /* Theme Switcher */
+        .theme-switcher {
+            position: fixed;
+            top: 60px;
+            right: 20px;
+            z-index: 1001;
+        }
+
+        .theme-btn {
+            background: var(--bg-black);
+            border: 2px solid var(--terminal-green);
+            color: var(--terminal-green);
+            padding: 0.5rem;
+            margin: 0.2rem;
+            cursor: pointer;
+            font-family: 'Share Tech Mono', monospace;
+            transition: all 0.3s ease;
+        }
+
+        .theme-btn:hover {
+            background: var(--terminal-green);
+            color: var(--bg-black);
+        }
+
+        .theme-btn.active-theme {
+            background: var(--terminal-green);
+            color: var(--bg-black);
+            box-shadow: 0 0 10px var(--terminal-green);
+        }
+
+        /* Matrix Theme */
+        body.matrix-theme {
+            --terminal-green: #00ff41;
+            --terminal-amber: #ff6b00;
+            --bg-black: #000;
+            --warning-yellow: #39ff14;
+        }
+
+        body.matrix-theme .holographic-bg {
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 255, 65, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 255, 65, 0.1) 0%, transparent 50%);
+        }
+
+        /* Cyberpunk Theme */
+        body.cyberpunk-theme {
+            --terminal-green: #00d4ff;
+            --terminal-amber: #ff0080;
+            --bg-black: #0a0a0a;
+            --warning-yellow: #ff6b00;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+        }
+
+        body.cyberpunk-theme .holographic-bg {
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 0, 128, 0.15) 0%, transparent 50%);
+        }
+
+        /* Retro Theme */
+        body.retro-theme {
+            --terminal-green: #ffff00;
+            --terminal-amber: #ff8000;
+            --bg-black: #2a2a2a;
+            --warning-yellow: #00ffff;
+            background: #2a2a2a;
+        }
+
+        body.retro-theme .holographic-bg {
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(255, 255, 0, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 128, 0, 0.1) 0%, transparent 50%);
+        }
+
+        /* Performance Metrics Display */
+        .performance-metrics {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border: 1px solid var(--terminal-green);
+            padding: 1rem;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 12px;
+            z-index: 1001;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .performance-metrics.visible {
+            opacity: 1;
+        }
+
+        /* Easter Egg Hidden Commands */
+        .easter-egg {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: var(--bg-black);
+            border: 2px solid var(--neon-purple);
+            padding: 2rem;
+            z-index: 2001;
+            text-align: center;
+            box-shadow: 0 0 20px var(--neon-purple);
+        }
+
+        .easter-egg.active {
+            display: block;
+            animation: glitch 0.5s ease-in-out;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translate(-50%, -50%); }
+            25% { transform: translate(-48%, -52%); }
+            50% { transform: translate(-52%, -48%); }
+            75% { transform: translate(-49%, -51%); }
         }
 
         /* Terminal Scanlines Effect */
@@ -186,31 +654,220 @@
             transition: 0.3s;
         }
 
-        /* Boot Sequence */
-        .boot-sequence {
+        /* MVP Loading Screen */
+        .mvp-loading-screen {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            height: 100%;
-            background: var(--bg-black);
+            height: 100vh;
+            background: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #000000 100%);
             color: var(--terminal-green);
-            z-index: 2000;
-            padding: 2rem;
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             font-family: 'Share Tech Mono', monospace;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .mvp-loading-screen canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .loading-container {
+            text-align: center;
+            max-width: 800px;
+            padding: 2rem;
+            position: relative;
+            z-index: 2;
             display: flex;
             flex-direction: column;
             justify-content: center;
-            animation: fadeOut 1s ease 3s forwards;
+            align-items: center;
+            min-height: 50vh;
         }
 
-        @keyframes fadeOut {
-            to { opacity: 0; visibility: hidden; }
+        .loading-logo {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            text-shadow: 0 0 20px var(--terminal-green);
+            animation: pulse-glow 2s ease-in-out infinite;
         }
 
-        .boot-text {
-            font-size: 16px;
-            margin: 0.2rem 0;
+        @keyframes pulse-glow {
+            0%, 100% { 
+                text-shadow: 0 0 20px var(--terminal-green), 0 0 40px var(--terminal-green);
+                transform: scale(1);
+            }
+            50% { 
+                text-shadow: 0 0 30px var(--terminal-green), 0 0 60px var(--terminal-green);
+                transform: scale(1.05);
+            }
+        }
+
+        .loading-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--terminal-amber);
+        }
+
+        .loading-subtitle {
+            font-size: 1rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        .loading-progress {
+            width: 100%;
+            height: 4px;
+            background: var(--gray-dark);
+            border-radius: 2px;
+            overflow: hidden;
+            margin-bottom: 1rem;
+            box-shadow: 0 0 10px rgba(0, 255, 0, 0.3);
+            position: relative;
+        }
+
+        .loading-progress::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: var(--progress, 0%);
+            background: linear-gradient(90deg, var(--terminal-green), var(--terminal-amber), var(--terminal-green));
+            border-radius: 2px;
+            transition: width 0.3s ease;
+            box-shadow: 0 0 15px var(--terminal-green);
+        }
+
+        .loading-progress-container {
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .loading-progress-text {
+            font-family: 'Courier Prime', monospace;
+            color: var(--terminal-green);
+            font-size: 1rem;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .loading-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--terminal-green), var(--terminal-amber), var(--terminal-green));
+            border-radius: 2px;
+            width: 0%;
+            animation: loading-fill 3s ease-out forwards;
+            box-shadow: 0 0 15px var(--terminal-green);
+        }
+
+        @keyframes loading-fill {
+            0% { width: 0%; }
+            20% { width: 15%; }
+            40% { width: 35%; }
+            60% { width: 60%; }
+            80% { width: 85%; }
+            100% { width: 100%; }
+        }
+
+        .loading-status {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            height: 20px;
+        }
+
+        .loading-dots {
+            display: inline-block;
+            animation: loading-dots 1.5s ease-in-out infinite;
+        }
+
+        @keyframes loading-dots {
+            0%, 20% { content: ''; }
+            40% { content: '.'; }
+            60% { content: '..'; }
+            80%, 100% { content: '...'; }
+        }
+
+        .loading-ascii {
+            font-size: 0.8rem;
+            line-height: 1.2;
+            opacity: 0.6;
+            margin-top: 2rem;
+            white-space: pre;
+            animation: fade-in-out 3s ease-in-out infinite;
+        }
+
+        .skip-hint {
+            font-size: 0.7rem;
+            color: var(--terminal-amber);
+            opacity: 0.7;
+            margin-top: 1rem;
+            animation: fade-in-out 2s ease-in-out infinite;
+            cursor: pointer;
+        }
+
+        @keyframes fade-in-out {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.8; }
+        }
+
+        .loading-screen-fadeout {
+            animation: screen-fadeout 1s ease-out forwards;
+        }
+
+        @keyframes screen-fadeout {
+            to { 
+                opacity: 0; 
+                visibility: hidden; 
+                transform: scale(1.1);
+            }
+        }
+
+        /* Loading Particles */
+        .loading-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .particle {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: var(--terminal-green);
+            border-radius: 50%;
+            animation: particle-float 4s linear infinite;
+        }
+
+        @keyframes particle-float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-10vh) translateX(100px);
+                opacity: 0;
+            }
         }
 
         /* Hero Terminal */
@@ -417,6 +1074,11 @@
             color: var(--terminal-green);
             padding: 0.5rem 1rem;
             border-bottom: 1px solid var(--terminal-green);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
 
         .experience-body {
@@ -438,8 +1100,13 @@
         .experience-duration {
             color: var(--warning-yellow);
             font-size: 12px;
+            font-weight: bold;
             float: right;
-            margin-top: -2rem;
+            background: var(--bg-black);
+            padding: 0.25rem 0.5rem;
+            border: 1px solid var(--warning-yellow);
+            border-radius: 2px;
+            font-family: 'Share Tech Mono', monospace;
         }
 
         /* Projects Terminal Grid */
@@ -484,6 +1151,20 @@
             color: var(--terminal-green);
             margin-bottom: 1rem;
             line-height: 1.6;
+        }
+
+        .project-timeline {
+            color: var(--warning-yellow);
+            font-size: 12px;
+            font-weight: bold;
+            background: var(--bg-black);
+            padding: 0.25rem 0.5rem;
+            border: 1px solid var(--warning-yellow);
+            border-radius: 2px;
+            font-family: 'Share Tech Mono', monospace;
+            display: inline-block;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
         }
 
         .tech-list {
@@ -598,7 +1279,18 @@
             color: var(--terminal-green);
         }
 
-        /* Responsive Design */
+        /* Responsive Design - Comprehensive */
+        @media (max-width: 1200px) {
+            .projects-grid {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+            
+            .live-code-editor {
+                width: 350px;
+                right: -370px;
+            }
+        }
+
         @media (max-width: 768px) {
             .menu-toggle {
                 display: flex;
@@ -636,21 +1328,125 @@
             }
 
             .stats-terminal {
-                grid-template-columns: 1fr;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
             }
 
             .projects-grid {
                 grid-template-columns: 1fr;
+                gap: 1rem;
             }
 
             .hero-ascii {
                 font-size: 8px;
+                padding: 1rem;
+            }
+
+            .experience-header-bar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+
+            .experience-duration {
+                float: none;
+                align-self: flex-end;
+                margin-top: 0;
+            }
+
+            /* Theme switcher responsive */
+            .theme-switcher {
+                top: 100px;
+                right: 10px;
+                display: flex;
+                flex-direction: column;
+                gap: 0.2rem;
+            }
+
+            .theme-btn {
+                font-size: 10px;
+                padding: 0.3rem 0.5rem;
+            }
+
+            /* AI Assistant responsive */
+            .ai-assistant {
+                width: 300px;
+                right: 10px;
+                bottom: 10px;
+            }
+
+            /* Code editor responsive */
+            .live-code-editor {
+                width: 90%;
+                right: -95%;
+                left: 5%;
+                height: 400px;
+                top: 100px;
+            }
+
+            .live-code-editor.active {
+                right: 5%;
+            }
+
+            /* Performance metrics responsive */
+            .performance-metrics {
+                top: 10px;
+                left: 10px;
+                font-size: 10px;
+                padding: 0.5rem;
+            }
+
+            /* Loading screen responsive */
+            .loading-logo {
+                font-size: 2.5rem;
+            }
+
+            .loading-title {
+                font-size: 1.2rem;
+            }
+
+            .loading-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .loading-ascii {
+                font-size: 0.5rem;
+                display: none;
+            }
+
+            /* Terminal windows responsive */
+            .terminal-window {
+                margin: 0 1rem;
+            }
+
+            .section {
+                padding: 2rem 1rem;
+            }
+
+            /* Skill radar responsive */
+            .skill-radar {
+                width: 250px;
+                height: 250px;
+            }
+
+            /* Interactive terminal responsive */
+            .interactive-terminal {
+                margin: 1rem 0;
+            }
+
+            .terminal-input {
+                font-size: 14px;
             }
         }
 
         @media (max-width: 480px) {
+            .hero {
+                padding: 1rem;
+                min-height: 80vh;
+            }
+
             .section {
-                padding: 2rem 1rem;
+                padding: 1.5rem 0.5rem;
             }
 
             .terminal-body {
@@ -659,10 +1455,213 @@
 
             .hero-ascii {
                 font-size: 6px;
+                margin: 1rem 0;
             }
 
             .command-line {
+                font-size: 12px;
+                flex-wrap: wrap;
+            }
+
+            .prompt {
+                margin-right: 0.5rem;
+                margin-bottom: 0.2rem;
+            }
+
+            /* Stats responsive */
+            .stats-terminal {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 1.5rem;
+            }
+
+            /* Project cards responsive */
+            .project-body {
+                padding: 1rem;
+            }
+
+            .project-title {
                 font-size: 14px;
+            }
+
+            .project-description {
+                font-size: 13px;
+                line-height: 1.4;
+            }
+
+            .tech-tag {
+                font-size: 10px;
+                padding: 0.2rem 0.5rem;
+            }
+
+            /* Experience cards responsive */
+            .experience-body {
+                padding: 0.8rem;
+            }
+
+            .experience-title {
+                font-size: 16px;
+            }
+
+            /* Contact form responsive */
+            .contact-item {
+                font-size: 13px;
+                margin: 0.8rem 0;
+            }
+
+            .form-input, .form-textarea {
+                font-size: 13px;
+                padding: 0.6rem;
+            }
+
+            .btn-terminal {
+                padding: 0.8rem 1.5rem;
+                font-size: 12px;
+            }
+
+            /* AI Assistant mobile */
+            .ai-assistant {
+                width: calc(100% - 20px);
+                left: 10px;
+                right: 10px;
+            }
+
+            .ai-assistant.expanded {
+                height: 350px;
+            }
+
+            /* Theme switcher mobile */
+            .theme-switcher {
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 0.1rem;
+                top: 60px;
+            }
+
+            /* Code editor mobile */
+            .live-code-editor {
+                width: 95%;
+                left: 2.5%;
+                right: -97.5%;
+                top: 80px;
+                height: 350px;
+            }
+
+            .live-code-editor.active {
+                right: 2.5%;
+            }
+
+            .code-input {
+                height: 200px;
+                font-size: 12px;
+            }
+
+            /* Loading screen mobile */
+            .loading-container {
+                padding: 1rem;
+            }
+
+            .loading-logo {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+
+            .loading-title {
+                font-size: 1rem;
+            }
+
+            .loading-subtitle {
+                font-size: 0.8rem;
+                margin-bottom: 2rem;
+            }
+
+            .loading-ascii {
+                display: none;
+            }
+
+            /* Navbar mobile */
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .terminal-prompt {
+                font-size: 12px;
+            }
+
+            /* Footer mobile */
+            .footer {
+                padding: 1.5rem 1rem;
+                font-size: 12px;
+            }
+        }
+
+        @media (max-width: 320px) {
+            .hero-ascii {
+                font-size: 4px;
+            }
+
+            .loading-logo {
+                font-size: 1.5rem;
+            }
+
+            .loading-title {
+                font-size: 0.9rem;
+            }
+
+            .section-title-bar {
+                font-size: 12px;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .command-line {
+                font-size: 11px;
+            }
+
+            .ai-assistant {
+                width: calc(100% - 10px);
+                left: 5px;
+                right: 5px;
+            }
+
+            .theme-switcher {
+                top: 50px;
+                gap: 0.1rem;
+            }
+
+            .theme-btn {
+                font-size: 8px;
+                padding: 0.2rem 0.3rem;
+            }
+        }
+
+        /* Landscape mobile optimization */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero {
+                min-height: 100vh;
+                padding: 0.5rem;
+            }
+
+            .hero-ascii {
+                font-size: 6px;
+                margin: 0.5rem 0;
+            }
+
+            .loading-logo {
+                font-size: 2rem;
+            }
+
+            .loading-container {
+                padding: 1rem;
+            }
+
+            .ai-assistant.expanded {
+                height: 250px;
+            }
+
+            .live-code-editor {
+                height: 300px;
             }
         }
 
@@ -674,8 +1673,9 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -2;
-            opacity: 0.1;
+            z-index: 1;
+            opacity: 0.3;
+            overflow: hidden;
         }
 
         .rain-column {
@@ -684,23 +1684,176 @@
             color: var(--terminal-green);
             font-family: 'Courier Prime', monospace;
             font-size: 14px;
+            line-height: 1.2;
             animation: rain-fall linear infinite;
+            text-shadow: 0 0 5px var(--terminal-green);
         }
 
         @keyframes rain-fall {
-            to { transform: translateY(100vh); }
+            0% { 
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+            10% { 
+                opacity: 1;
+            }
+            90% { 
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+
+        /* Floating Particles Animation */
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px) rotateX(0deg);
+            }
+            25% {
+                transform: translateY(-10px) rotateX(90deg);
+            }
+            50% {
+                transform: translateY(-20px) rotateX(180deg);
+            }
+            75% {
+                transform: translateY(-10px) rotateX(270deg);
+            }
+        }
+
+        .floating-particles {
+            pointer-events: none;
         }
     </style>
 </head>
 <body>
-    <!-- Boot Sequence -->
-    <div class="boot-sequence" id="bootSequence">
-        <div class="boot-text">SYSTEM BOOT INITIATED...</div>
-        <div class="boot-text">LOADING SUKARNA.EXE...</div>
-        <div class="boot-text">INITIALIZING ROBOTICS MODULES...</div>
-        <div class="boot-text">BLOCKCHAIN PROTOCOLS LOADED...</div>
-        <div class="boot-text">SYSTEM READY.</div>
-        <div class="boot-text">> WELCOME TO SUKARNA TERMINAL</div>
+    <!-- Holographic Background -->
+    <div class="holographic-bg"></div>
+
+    <!-- Neural Network Animation -->
+    <div class="neural-network" id="neuralNetwork"></div>
+
+    <!-- Floating 3D Icons -->
+    <div class="floating-icons" id="floatingIcons"></div>
+
+    <!-- Performance Metrics -->
+    <div class="performance-metrics" id="performanceMetrics">
+        <div>FPS: <span id="fps">60</span></div>
+        <div>Memory: <span id="memory">12.5MB</span></div>
+        <div>Load Time: <span id="loadTime">0.8s</span></div>
+        <div>Visitors: <span id="visitors">1337</span></div>
+    </div>
+
+    <!-- Theme Switcher -->
+    <div class="theme-switcher">
+        <button class="theme-btn" onclick="switchTheme('default')">DEFAULT</button>
+        <button class="theme-btn" onclick="switchTheme('matrix')">MATRIX</button>
+        <button class="theme-btn" onclick="switchTheme('cyberpunk')">CYBER</button>
+        <button class="theme-btn" onclick="switchTheme('retro')">RETRO</button>
+        <button class="theme-btn" onclick="toggleCodeEditor()" title="Open Live Code Editor">CODE</button>
+    </div>
+
+    <!-- Live Code Editor -->
+    <div class="live-code-editor" id="codeEditor">
+        <div class="code-header">
+            <span>LIVE_CODE_EDITOR.JS | Ctrl+Enter: Execute | Ctrl+Shift+L: Clear</span>
+            <button class="code-close-btn" onclick="toggleCodeEditor()" title="Close Editor">×</button>
+        </div>
+        <div class="code-content">
+            <textarea class="code-input" id="codeInput" placeholder="// Welcome to the Live Code Editor!
+// Try typing some JavaScript code here:
+
+console.log('Hello from PAVAN\'s Live Code Editor!');
+
+// Change the theme
+document.body.style.filter = 'hue-rotate(45deg)';
+
+// Create an alert
+alert('Code executed successfully!');
+
+// Access portfolio elements
+document.querySelector('.terminal-green').style.color = '#ff00ff';
+
+// Try any JavaScript you want!"></textarea>
+            <div class="code-actions">
+                <button class="code-execute-btn clear-btn" onclick="clearCodeOutput()">CLEAR</button>
+                <button class="code-execute-btn" onclick="executeCode()">EXECUTE</button>
+            </div>
+            <div id="codeOutput" class="code-output" style="display: none;">
+                <div style="color: var(--terminal-amber); margin-bottom: 0.5rem;">OUTPUT:</div>
+                <div id="codeResult"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Assistant -->
+    <div class="ai-assistant" id="aiAssistant">
+        <div class="ai-header" onclick="toggleAI()">
+            <div class="ai-status">
+                <div class="status-dot"></div>
+                <span>PAVAN.AI</span>
+            </div>
+            <span>🤖</span>
+        </div>
+        <div class="ai-chat" id="aiChat">
+            <div class="chat-message">System: AI Assistant Online</div>
+            <div class="chat-message">PAVAN.AI: Type 'help' for commands or click 🎤 for voice</div>
+            <div class="chat-message">Voice commands: Say any command or "Hey PAVAN" + command</div>
+            <div style="display: flex; gap: 0.5rem; margin: 0.5rem 0;">
+                <input type="text" id="aiInput" placeholder="Type your command..." 
+                       style="background:var(--bg-black);border:1px solid var(--terminal-green);color:var(--terminal-green);padding:0.5rem;flex:1;font-family:'Courier Prime',monospace;"
+                       onkeypress="handleAIInput(event)">
+                <button onclick="startVoiceRecognition()" 
+                        style="background:var(--bg-black);border:1px solid var(--terminal-green);color:var(--terminal-green);padding:0.5rem;cursor:pointer;font-size:16px;"
+                        title="Click to start voice recognition">🎤</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Voice Recognition Indicator -->
+    <div class="voice-indicator" id="voiceIndicator">
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:var(--terminal-green);">
+            🎤 LISTENING...
+        </div>
+    </div>
+
+    <!-- Easter Egg -->
+    <div class="easter-egg" id="easterEgg">
+        <h2>🎉 KONAMI CODE ACTIVATED! 🎉</h2>
+        <p>You found the secret developer mode!</p>
+        <p>Console access granted...</p>
+        <button class="theme-btn" onclick="closeEasterEgg()">CLOSE</button>
+    </div>
+
+    <!-- MVP Loading Screen -->
+    <div class="mvp-loading-screen" id="loadingScreen" onclick="skipLoading()">
+        <canvas id="particleCanvas"></canvas>
+        <div class="loading-container">
+            <div class="loading-logo">PAVAN.EXE</div>
+            <div class="loading-title">INITIALIZING DIGITAL PORTFOLIO SYSTEM</div>
+            <div class="loading-subtitle">Full Stack Developer | AI/ML Enthusiast | Tech Innovator</div>
+            
+            <div class="loading-progress-container">
+                <div class="loading-progress"></div>
+                <div class="loading-progress-text">0%</div>
+            </div>
+            
+            <div class="loading-status" id="loadingStatus">
+                SYSTEM BOOT INITIATED<span class="loading-dots"></span>
+            </div>
+            
+            <div class="loading-ascii">
+    ██████╗  █████╗ ██╗   ██╗ █████╗ ███╗   ██╗
+    ██╔══██╗██╔══██╗██║   ██║██╔══██╗████╗  ██║
+    ██████╔╝███████║██║   ██║███████║██╔██╗ ██║
+    ██╔═══╝ ██╔══██║╚██╗ ██╔╝██╔══██║██║╚██╗██║
+    ██║     ██║  ██║ ╚████╔╝ ██║  ██║██║ ╚████║
+    ╚═╝     ╚═╝  ╚═╝  ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═══╝
+            </div>
+            
+            <div class="skip-hint">Click anywhere to skip loading</div>
+        </div>
     </div>
 
     <!-- CRT Effects -->
@@ -739,7 +1892,7 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <div class="terminal-prompt">SUKARNA@TERMINAL:~$</div>
+            <div class="terminal-prompt">PAVAN@TERMINAL:~$</div>
             <div class="menu-toggle">
                 <span></span>
                 <span></span>
@@ -751,6 +1904,7 @@
                 <li><a href="#experience">./exp</a></li>
                 <li><a href="#projects">./projects</a></li>
                 <li><a href="#contact">./contact</a></li>
+                <li><a href="#" onclick="toggleCodeEditor(); return false;">./code_editor</a></li>
             </ul>
         </div>
     </nav>
@@ -759,7 +1913,7 @@
     <section id="home" class="hero">
         <div class="terminal-window">
             <div class="terminal-header">
-                <div class="terminal-title">SUKARNA.EXE - ROBOTICS ENGINEER SYSTEM v2.025</div>
+                <div class="terminal-title">PAVAN.EXE - MERN STACK DEVELOPER SYSTEM v2.025</div>
                 <div class="terminal-controls">
                     <div class="control-btn"></div>
                     <div class="control-btn"></div>
@@ -768,39 +1922,39 @@
             </div>
             <div class="terminal-body">
                 <div class="command-line">
-                    <span class="prompt">SUKARNA@SYSTEM:~$</span>
+                    <span class="prompt">PAVAN@SYSTEM:~$</span>
                     <span class="command">cat /etc/profile</span>
                 </div>
                 
                 <div class="hero-ascii">
  ╔══════════════════════════════════════════════════════════════════════════════════════╗
- ║  ███████╗██╗   ██╗██╗  ██╗ █████╗ ██████╗ ███╗   ██╗ █████╗                        ║
- ║  ██╔════╝██║   ██║██║ ██╔╝██╔══██╗██╔══██╗████╗  ██║██╔══██╗                       ║
- ║  ███████╗██║   ██║█████╔╝ ███████║██████╔╝██╔██╗ ██║███████║                       ║
- ║  ╚════██║██║   ██║██╔═██╗ ██╔══██║██╔══██╗██║╚██╗██║██╔══██║                       ║
- ║  ███████║╚██████╔╝██║  ██╗██║  ██║██║  ██║██║ ╚████║██║  ██║                       ║
- ║  ╚══════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝                       ║
+ ║  ██████╗  █████╗ ██╗   ██╗ █████╗ ███╗   ██╗    ██╗  ██╗                          ║
+ ║  ██╔══██╗██╔══██╗██║   ██║██╔══██╗████╗  ██║    ██║ ██╔╝                          ║
+ ║  ██████╔╝███████║██║   ██║███████║██╔██╗ ██║    █████╔╝                           ║
+ ║  ██╔═══╝ ██╔══██║╚██╗ ██╔╝██╔══██║██║╚██╗██║    ██╔═██╗                           ║
+ ║  ██║     ██║  ██║ ╚████╔╝ ██║  ██║██║ ╚████║    ██║  ██╗                          ║
+ ║  ╚═╝     ╚═╝  ╚═╝  ╚═══╝  ╚═╝  ╚═╝╚═╝  ╚═══╝    ╚═╝  ╚═╝                          ║
  ║                                                                                    ║
- ║  > ROBOTICS ENGINEER | BLOCKCHAIN DEVELOPER | FULL STACK INNOVATOR               ║
+ ║  > MERN STACK DEVELOPER | AI/ML ENTHUSIAST | FULL STACK INNOVATOR                 ║
  ║  > SYSTEM STATUS: OPERATIONAL                                                     ║
- ║  > LOCATION: BANGALORE, KARNATAKA, INDIA                                          ║
+ ║  > LOCATION: BENGALURU, INDIA                                                     ║
  ║  > UNIVERSITY: PRESIDENCY UNIVERSITY                                              ║
  ╚══════════════════════════════════════════════════════════════════════════════════════╝</div>
 
                 <div class="command-line">
-                    <span class="prompt">SUKARNA@SYSTEM:~$</span>
+                    <span class="prompt">PAVAN@SYSTEM:~$</span>
                     <span class="command">whoami</span>
                 </div>
-                <div class="output">Dynamic professional with extensive expertise in Robotics, IoT, Blockchain, and Software Development. Published author on AI-driven systems with proven track record in managing complex projects from conception to execution.</div>
+                <div class="output">Innovative and results-driven Computer Science and Robotics enthusiast with hands-on experience in full-stack development, AI, IoT, and embedded systems. Skilled in leading technical projects, mentoring student teams, and building impactful solutions from ideation to execution. Recognized as Best Innovator for outstanding contributions to university-level innovation initiatives.</div>
 
                 <div class="command-line">
-                    <span class="prompt">SUKARNA@SYSTEM:~$</span>
+                    <span class="prompt">PAVAN@SYSTEM:~$</span>
                     <span class="command typing-effect">ls -la ./skills/</span>
                 </div>
-                <div class="output">drwxr-xr-x robotics/    blockchain/    fullstack/    ai-ml/    embedded/</div>
+                <div class="output">drwxr-xr-x python/    javascript/    react/    node/    ai-ml/    embedded/</div>
 
                 <div class="command-line">
-                    <span class="prompt">SUKARNA@SYSTEM:~$</span>
+                    <span class="prompt">PAVAN@SYSTEM:~$</span>
                     <span class="command">echo "Ready to innovate"</span>
                 </div>
                 <div class="output">Ready to innovate <span class="cursor"></span></div>
@@ -832,31 +1986,31 @@
  └─────────────────────┘</div>
                     <div>
                         <div class="command-line">
-                            <span class="prompt">SUKARNA@SYSTEM:~$</span>
+                            <span class="prompt">PAVAN@SYSTEM:~$</span>
                             <span class="command">cat ./about/bio.txt</span>
                         </div>
                         <div class="output">
-NAME: SUKARNA JANA
-STATUS: TECH INNOVATOR & SYSTEM ARCHITECT
-CURRENT_MISSION: B.TECH BLOCKCHAIN @ PRESIDENCY UNIVERSITY
-CGPA: 7.97/10.0
-SPECIALIZATION: [ROBOTICS, IOT, BLOCKCHAIN, AI/ML]
+NAME: PAVAN K
+STATUS: TECH INNOVATOR & FULL STACK DEVELOPER
+CURRENT_MISSION: B.TECH COMPUTER SCIENCE @ PRESIDENCY UNIVERSITY
+CGPA: 8.17/10.0
+SPECIALIZATION: [MERN STACK, AI/ML, IoT, EMBEDDED SYSTEMS]
 
 PROFILE_SUMMARY:
-> Specialized in cutting-edge technologies
-> Published research author (3 papers)
-> Founded Beebotix - Custom embedded solutions company
-> Extensive hands-on experience across multiple domains
-> Proven track record in complex project management
+> Innovative and results-driven Computer Science enthusiast
+> Recognized as Best Innovator at university
+> Skilled in leading technical projects and mentoring
+> Hands-on experience in full-stack development
+> Passionate about leveraging technology to solve real-world problems
                         </div>
 
                         <div class="command-line">
-                            <span class="prompt">SUKARNA@SYSTEM:~$</span>
+                            <span class="prompt">PAVAN@SYSTEM:~$</span>
                             <span class="command">./stats.exe</span>
                         </div>
                         <div class="stats-terminal">
                             <div class="stat-box">
-                                <div class="stat-number">7.97</div>
+                                <div class="stat-number">8.17</div>
                                 <div class="stat-label">CURRENT CGPA</div>
                             </div>
                             <div class="stat-box">
@@ -864,12 +2018,69 @@ PROFILE_SUMMARY:
                                 <div class="stat-label">MAJOR PROJECTS</div>
                             </div>
                             <div class="stat-box">
-                                <div class="stat-number">3</div>
-                                <div class="stat-label">PUBLICATIONS</div>
+                                <div class="stat-number">3+</div>
+                                <div class="stat-label">HACKATHONS</div>
                             </div>
                             <div class="stat-box">
-                                <div class="stat-number">2025</div>
+                                <div class="stat-number">2026</div>
                                 <div class="stat-label">GRADUATION</div>
+                            </div>
+                        </div>
+
+                        <!-- Interactive Skills Radar -->
+                        <div class="command-line">
+                            <span class="prompt">PAVAN@SYSTEM:~$</span>
+                            <span class="command">./skill_radar.exe --visualize</span>
+                        </div>
+                        <div class="skill-radar">
+                            <svg class="radar-svg" id="skillRadar" viewBox="0 0 300 300">
+                                <!-- Radar grid will be generated by JavaScript -->
+                            </svg>
+                        </div>
+
+                        <!-- Interactive Terminal -->
+                        <div class="command-line">
+                            <span class="prompt">PAVAN@SYSTEM:~$</span>
+                            <span class="command">./interactive_mode.sh --enable</span>
+                        </div>
+                        <div class="interactive-terminal">
+                            <div class="terminal-header">
+                                <div class="terminal-title">INTERACTIVE TERMINAL - TRY COMMANDS</div>
+                            </div>
+                            <div class="terminal-body">
+                                <div id="terminalOutput">
+                                    <div class="output">Welcome to PAVAN Interactive Terminal v2.025</div>
+                                    <div class="output">Try commands: help, skills, projects, contact, matrix, hack, clear</div>
+                                    <div class="output">Voice commands: Say "Hey PAVAN" + command</div>
+                                </div>
+                                <div class="command-line">
+                                    <span class="prompt">VISITOR@PAVAN:~$</span>
+                                    <input type="text" class="terminal-input" id="terminalInput" placeholder="Type your command here..." onkeypress="handleTerminalInput(event)">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Live GitHub Stats -->
+                        <div class="command-line">
+                            <span class="prompt">PAVAN@SYSTEM:~$</span>
+                            <span class="command">curl -s api.github.com/users/Pavan19047 | jq</span>
+                        </div>
+                        <div class="stats-terminal" id="githubStats">
+                            <div class="stat-box" id="repoCount">
+                                <div class="stat-number">Loading...</div>
+                                <div class="stat-label">REPOSITORIES</div>
+                            </div>
+                            <div class="stat-box" id="followerCount">
+                                <div class="stat-number">Loading...</div>
+                                <div class="stat-label">FOLLOWERS</div>
+                            </div>
+                            <div class="stat-box" id="commitCount">
+                                <div class="stat-number">1000+</div>
+                                <div class="stat-label">COMMITS</div>
+                            </div>
+                            <div class="stat-box" id="codeLines">
+                                <div class="stat-number">50K+</div>
+                                <div class="stat-label">LINES OF CODE</div>
                             </div>
                         </div>
                     </div>
@@ -884,76 +2095,55 @@ PROFILE_SUMMARY:
             <div class="section-title-bar">./experience.log - PROFESSIONAL TIMELINE</div>
             <div class="section-content">
                 <div class="command-line">
-                    <span class="prompt">SUKARNA@SYSTEM:~$</span>
+                    <span class="prompt">PAVAN@SYSTEM:~$</span>
                     <span class="command">tail -f /var/log/career.log</span>
                 </div>
 
                 <div class="experience-terminal">
                     <div class="experience-header-bar">
-                        [CURRENT] EMBEDDED INTERN - TONBO IMAGING INDIA PVT. LTD.
-                        <span class="experience-duration">JAN 2025 - JUL 2025</span>
+                        <span>[CURRENT] FRONTEND DEVELOPER INTERN</span>
+                        <span class="experience-duration">AUG 2025 - PRESENT</span>
                     </div>
                     <div class="experience-body">
-                        <div class="experience-title">$ ./embedded_systems.sh --full-time</div>
-                        <div class="experience-company">COMPANY: TONBO_IMAGING_INDIA_PVT_LTD</div>
+                        <div class="experience-title">$ ./frontend_dev.sh --fullstack</div>
+                        <div class="experience-company">ORGANIZATION: GAINGE_CAMPUS | SOUTH_KOREA</div>
                         <ul class="terminal-list">
-                            <li>PCB design and optimization for imaging applications</li>
-                            <li>Embedded software development and integration</li>
-                            <li>Advanced imaging system project collaboration</li>
-                            <li>Due to NDA: [CLASSIFIED PROJECT DETAILS]</li>
+                            <li>Contributed to frontend and backend development for web applications</li>
+                            <li>Worked with React.js, Node.js, and GraphQL/Apollo to enhance platform functionality</li>
+                            <li>Collaborated with the engineering team to debug, optimize, and deploy features in a production environment</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="experience-terminal">
                     <div class="experience-header-bar">
-                        [CURRENT] SOFTWARE INTERN - METAEX TECHNOLOGY SERVICES
-                        <span class="experience-duration">SEP 2024 - MAR 2025</span>
+                        <span>[CURRENT] AI/ML TRAINEE</span>
+                        <span class="experience-duration">JUN 2025 - PRESENT</span>
                     </div>
                     <div class="experience-body">
-                        <div class="experience-title">$ ./fullstack_dev.sh --part-time</div>
-                        <div class="experience-company">COMPANY: METAEX_TECHNOLOGY_SERVICES</div>
+                        <div class="experience-title">$ ./ai_ml_training.sh --samsung</div>
+                        <div class="experience-company">ORGANIZATION: SAMSUNG_INNOVATION_CAMPUS</div>
                         <ul class="terminal-list">
-                            <li>Large-scale API development and maintenance</li>
-                            <li>Database optimization (SQL/NoSQL) for big data</li>
-                            <li>Cross-functional team integration</li>
-                            <li>Scalability and performance optimization</li>
+                            <li>Selected AI/ML Trainee at Samsung Innovation Campus</li>
+                            <li>Undergoing real-world AI & ML project-based training</li>
+                            <li>Working on cutting-edge AI technologies and machine learning algorithms</li>
                         </ul>
                     </div>
                 </div>
 
                 <div class="experience-terminal">
                     <div class="experience-header-bar">
-                        [COMPLETED] R&D INTERN - SCANPICK PVT. LTD.
-                        <span class="experience-duration">JUL 2024 - OCT 2024</span>
+                        <span>[CURRENT] JUNIOR RESEARCH FACULTY</span>
+                        <span class="experience-duration">FEB 2025 - PRESENT</span>
                     </div>
                     <div class="experience-body">
-                        <div class="experience-title">$ ./research_dev.sh --embedded-systems</div>
-                        <div class="experience-company">COMPANY: SCANPICK_PVT_LTD</div>
+                        <div class="experience-title">$ ./mentor.sh --innovation</div>
+                        <div class="experience-company">ORGANIZATION: PRESIDENCY_UNIVERSITY | BANGALORE</div>
                         <ul class="terminal-list">
-                            <li>PCB design for vending machine systems</li>
-                            <li>Embedded software solutions development</li>
-                            <li>Complete circuitry assembly and testing</li>
-                            <li>Full product development lifecycle involvement</li>
-                            <li>Continuing as consultant [ONGOING]</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="experience-terminal">
-                    <div class="experience-header-bar">
-                        [LEADERSHIP] CTO & PROJECT LEAD - VIKASANA
-                        <span class="experience-duration">FEB 2022 - AUG 2024</span>
-                    </div>
-                    <div class="experience-body">
-                        <div class="experience-title">$ sudo ./cto_mode.sh --leadership</div>
-                        <div class="experience-company">ORGANIZATION: VIKASANA_BANGALORE</div>
-                        <ul class="terminal-list">
-                            <li>Chief Technology Officer [DEC 2022 - AUG 2023]</li>
-                            <li>Head of Robotics and Electronic Department</li>
-                            <li>DD Robocon 2022 - Junior Developer [ECE Dept]</li>
-                            <li>India CanSat - Ground Station Controller</li>
-                            <li>Multiple complex robotics projects [COMPLETED]</li>
+                            <li>Mentored 30+ teams on Arduino, Raspberry Pi, and IoT projects</li>
+                            <li>Managed 3D printing operations and prototype design optimization</li>
+                            <li>Organized hackathons, workshops, and technical exhibitions</li>
+                            <li>Guided juniors, ensuring knowledge transfer and project success</li>
                         </ul>
                     </div>
                 </div>
@@ -967,109 +2157,31 @@ PROFILE_SUMMARY:
             <div class="section-title-bar">./projects/ - EXECUTABLE FILES</div>
             <div class="section-content">
                 <div class="command-line">
-                    <span class="prompt">SUKARNA@SYSTEM:~$</span>
+                    <span class="prompt">PAVAN@SYSTEM:~$</span>
                     <span class="command">ls -la ./projects/*.exe</span>
                 </div>
 
                 <div class="projects-grid">
                     <div class="project-terminal">
                         <div class="project-header">
-                            <span>BEEBOTIX.EXE</span>
+                            <span>AI_SUPPLY_CHAIN.EXE</span>
                             <span class="project-status">[RUNNING]</span>
                         </div>
                         <div class="project-body">
-                            <div class="project-title">$ ./beebotix --startup</div>
+                            <div class="project-title">$ ./ai_supply_chain --inventory</div>
                             <div class="project-description">
-PROCESS: Custom embedded systems company
-FUNCTION: ESP32, ESP8285, STM32F development boards
-TARGET: Hobbyists, engineers, businesses
-STATUS: MSME registered, production ready
-LAUNCH: 2024-12-10 [SCHEDULED]
+PROCESS: AI-powered inventory counting and logistics
+FUNCTION: React.js frontend, Python/FastAPI backend
+FEATURE: Real-time streaming AI chat assistant
+MODEL: Custom YOLOv8 for inventory detection
+STATUS: Fully operational
                             </div>
+                            <div class="project-timeline">AUG 2025</div>
                             <div class="tech-list">
-                                <span class="tech-tag">ESP32</span>
-                                <span class="tech-tag">STM32F</span>
-                                <span class="tech-tag">PCB_DESIGN</span>
-                                <span class="tech-tag">EMBEDDED</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="terminal-link">[WEBSITE]</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-terminal">
-                        <div class="project-header">
-                            <span>HUMANOID_ROBOT.EXE</span>
-                            <span class="project-status">[RECENT]</span>
-                        </div>
-                        <div class="project-body">
-                            <div class="project-title">$ ./humanoid --ros2</div>
-                            <div class="project-description">
-PROCESS: Advanced humanoid robotics system
-HARDWARE: Jetson Nano, ROS2 framework
-FEATURES: Enhanced functionality and adaptability
-PROJECT: University research initiative
-TIMELINE: 2023-11 to 2024-09-09
-                            </div>
-                            <div class="tech-list">
-                                <span class="tech-tag">JETSON_NANO</span>
-                                <span class="tech-tag">ROS2</span>
-                                <span class="tech-tag">ROBOTICS</span>
-                                <span class="tech-tag">AI_ML</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="terminal-link">[SOURCE_CODE]</a>
-                                <a href="#" class="terminal-link">[UPDATES]</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-terminal">
-                        <div class="project-header">
-                            <span>CANGII_SOFTWARE.EXE</span>
-                            <span class="project-status">[STABLE]</span>
-                        </div>
-                        <div class="project-body">
-                            <div class="project-title">$ ./cangii --satellite-comm</div>
-                            <div class="project-description">
-PROCESS: Satellite communication software
-PROTOCOL: Zigbee wireless communication
-FEATURES: Ground station control, data plotting
-BACKUP: CSV format crash protection
-LICENSE: Open source
-                            </div>
-                            <div class="tech-list">
-                                <span class="tech-tag">PYTHON</span>
-                                <span class="tech-tag">ZIGBEE</span>
-                                <span class="tech-tag">DATA_VIZ</span>
-                                <span class="tech-tag">AEROSPACE</span>
-                            </div>
-                            <div class="project-links">
-                                <a href="#" class="terminal-link">[OPEN_SOURCE]</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="project-terminal">
-                        <div class="project-header">
-                            <span>PUJA_ROBOT.EXE</span>
-                            <span class="project-status">[STABLE]</span>
-                        </div>
-                        <div class="project-body">
-                            <div class="project-title">$ ./puja_robot --nlp-mode</div>
-                            <div class="project-description">
-PROCESS: 3D printed Raspberry Pi robot
-AI_MODULE: Custom-trained NLP capabilities
-FEATURE: Kid Accent for child interaction
-INSPIRED: Open-source "JOY" robot
-HARDWARE: Raspberry Pi 5
-                            </div>
-                            <div class="tech-list">
-                                <span class="tech-tag">RASPBERRY_PI</span>
-                                <span class="tech-tag">NLP</span>
-                                <span class="tech-tag">3D_PRINTING</span>
-                                <span class="tech-tag">AI</span>
+                                <span class="tech-tag">REACT</span>
+                                <span class="tech-tag">FASTAPI</span>
+                                <span class="tech-tag">YOLOV8</span>
+                                <span class="tech-tag">GEMINI_API</span>
                             </div>
                             <div class="project-links">
                                 <a href="#" class="terminal-link">[DEMO]</a>
@@ -1079,23 +2191,103 @@ HARDWARE: Raspberry Pi 5
 
                     <div class="project-terminal">
                         <div class="project-header">
-                            <span>AR_BIKE_WORLD.EXE</span>
+                            <span>FIXITHUB.EXE</span>
                             <span class="project-status">[STABLE]</span>
                         </div>
                         <div class="project-body">
-                            <div class="project-title">$ ./ar_bikes --augmented-reality</div>
+                            <div class="project-title">$ ./fixithub --service-booking</div>
                             <div class="project-description">
-PROCESS: Immersive AR bike catalog platform
-FUNCTION: Real-world bike model visualization
-PLATFORM: Android application
-LANGUAGE: Kotlin development
-PURPOSE: Enhanced shopping experience
+PROCESS: Local service booking platform
+FUNCTION: Booking electricians, plumbers, and carpenters
+FRONTEND: React.js with responsive design
+BACKEND: Node.js with MongoDB integration
+FEATURES: SMS notifications via Twilio API
                             </div>
+                            <div class="project-timeline">FEB 2025 - PRESENT</div>
                             <div class="tech-list">
-                                <span class="tech-tag">KOTLIN</span>
-                                <span class="tech-tag">ANDROID</span>
-                                <span class="tech-tag">AR</span>
-                                <span class="tech-tag">3D_MODELS</span>
+                                <span class="tech-tag">REACT</span>
+                                <span class="tech-tag">NODE</span>
+                                <span class="tech-tag">MONGODB</span>
+                                <span class="tech-tag">TWILIO_API</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="terminal-link">[SOURCE_CODE]</a>
+                                <a href="#" class="terminal-link">[DEMO]</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-terminal">
+                        <div class="project-header">
+                            <span>FOODVISION.EXE</span>
+                            <span class="project-status">[STABLE]</span>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-title">$ ./foodvision --classify</div>
+                            <div class="project-description">
+PROCESS: Food classification system
+FRAMEWORK: PyTorch with Vision Transformer
+CAPABILITY: Classify 101 distinct food items
+USE_CASE: Nutrition tracking, food automation
+                            </div>
+                            <div class="project-timeline">JUN 2024</div>
+                            <div class="tech-list">
+                                <span class="tech-tag">PYTORCH</span>
+                                <span class="tech-tag">VIT</span>
+                                <span class="tech-tag">COMPUTER_VISION</span>
+                                <span class="tech-tag">AI_ML</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="terminal-link">[DEMO]</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-terminal">
+                        <div class="project-header">
+                            <span>SECURE_T.EXE</span>
+                            <span class="project-status">[STABLE]</span>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-title">$ ./secure_t --security</div>
+                            <div class="project-description">
+PROCESS: AI-powered automated security turret
+VISION: Object detection for movement tracking
+HARDWARE: Servo-controlled targeting system
+FEATURE: Remote monitoring and control interface
+                            </div>
+                            <div class="project-timeline">NOV 2022</div>
+                            <div class="tech-list">
+                                <span class="tech-tag">COMPUTER_VISION</span>
+                                <span class="tech-tag">EMBEDDED</span>
+                                <span class="tech-tag">SERVO_CONTROL</span>
+                                <span class="tech-tag">SECURITY</span>
+                            </div>
+                            <div class="project-links">
+                                <a href="#" class="terminal-link">[DEMO]</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-terminal">
+                        <div class="project-header">
+                            <span>KISANET.EXE</span>
+                            <span class="project-status">[STABLE]</span>
+                        </div>
+                        <div class="project-body">
+                            <div class="project-title">$ ./kisanet --agriculture</div>
+                            <div class="project-description">
+PROCESS: Smart Agriculture & E-Commerce Platform
+FUNCTION: Soil monitoring, plant tracking, AI quality checks
+FEATURE: E-commerce solution for direct farmer sales
+ANALYTICS: Real-time data and predictive management
+                            </div>
+                            <div class="project-timeline">JUN 2023</div>
+                            <div class="tech-list">
+                                <span class="tech-tag">IOT</span>
+                                <span class="tech-tag">E_COMMERCE</span>
+                                <span class="tech-tag">AI</span>
+                                <span class="tech-tag">AGRICULTURE</span>
                             </div>
                             <div class="project-links">
                                 <a href="#" class="terminal-link">[GITHUB]</a>
@@ -1105,26 +2297,26 @@ PURPOSE: Enhanced shopping experience
 
                     <div class="project-terminal">
                         <div class="project-header">
-                            <span>PORTFOLIO_WEB.EXE</span>
+                            <span>CAREER_GENIE.EXE</span>
                             <span class="project-status">[STABLE]</span>
                         </div>
                         <div class="project-body">
-                            <div class="project-title">$ ./portfolio --react-js</div>
+                            <div class="project-title">$ ./career_genie --counseling</div>
                             <div class="project-description">
-PROCESS: Dynamic portfolio website
-FRAMEWORK: React JS implementation
-FEATURES: Responsive design, skill showcase
-VERSIONS: Web Dev (v0.1), Robotics (v0.2)
-DEPLOYMENT: Live production environment
+PROCESS: AI-Based Career Counseling Platform
+FRAMEWORK: React, FastAPI, OpenAI API
+FEATURES: Personalized recommendations based on AI
+TARGET: Secondary school students
                             </div>
+                            <div class="project-timeline">NOV 2022</div>
                             <div class="tech-list">
                                 <span class="tech-tag">REACT</span>
-                                <span class="tech-tag">JAVASCRIPT</span>
-                                <span class="tech-tag">RESPONSIVE</span>
-                                <span class="tech-tag">UI_UX</span>
+                                <span class="tech-tag">FASTAPI</span>
+                                <span class="tech-tag">OPENAI</span>
+                                <span class="tech-tag">EDUCATION</span>
                             </div>
                             <div class="project-links">
-                                <a href="#" class="terminal-link">[LIVE_SITE]</a>
+                                <a href="#" class="terminal-link">[DEMO]</a>
                             </div>
                         </div>
                     </div>
@@ -1139,7 +2331,7 @@ DEPLOYMENT: Live production environment
             <div class="section-title-bar">./contact.sh - NETWORK INTERFACE</div>
             <div class="section-content">
                 <div class="command-line">
-                    <span class="prompt">SUKARNA@SYSTEM:~$</span>
+                    <span class="prompt">PAVAN@SYSTEM:~$</span>
                     <span class="command">netstat -an | grep ESTABLISHED</span>
                 </div>
 
@@ -1154,11 +2346,11 @@ DEPLOYMENT: Live production environment
                             
                             <div class="contact-item">
                                 <span class="contact-icon">📞</span>
-                                <span>PHONE: +91 9113688393</span>
+                                <span>PHONE: +91 7760895008</span>
                             </div>
                             <div class="contact-item">
                                 <span class="contact-icon">📍</span>
-                                <span>LOCATION: BANGALORE, KARNATAKA, INDIA</span>
+                                <span>LOCATION: BENGALURU, KARNATAKA, INDIA</span>
                             </div>
                             <div class="contact-item">
                                 <span class="contact-icon">🎓</span>
@@ -1166,7 +2358,7 @@ DEPLOYMENT: Live production environment
                             </div>
                             <div class="contact-item">
                                 <span class="contact-icon">💼</span>
-                                <span>ROLE: ROBOTICS_ENGINEER | FULL_STACK_DEV</span>
+                                <span>ROLE: MERN_STACK_DEVELOPER | AI_ENTHUSIAST</span>
                             </div>
 
                             <div class="command-line">
@@ -1174,18 +2366,14 @@ DEPLOYMENT: Live production environment
                                 <span class="command">ls ./social_networks/</span>
                             </div>
                             <div class="output">
-linkedin.lnk    github.lnk    youtube.lnk    gmail.lnk
-orcid.lnk      hackerrank.lnk
+linkedin.lnk    github.lnk    gmail.lnk
                             </div>
 
-                            <div class="terminal-list">
-                                <li><a href="#" class="terminal-link">LINKEDIN_PROFILE.URL</a></li>
-                                <li><a href="#" class="terminal-link">GITHUB_REPOS.URL</a></li>
-                                <li><a href="#" class="terminal-link">YOUTUBE_CHANNEL.URL</a></li>
-                                <li><a href="#" class="terminal-link">GMAIL_CONTACT.URL</a></li>
-                                <li><a href="#" class="terminal-link">ORCID_RESEARCH.URL</a></li>
-                                <li><a href="#" class="terminal-link">HACKERRANK_PROFILE.URL</a></li>
-                            </div>
+                            <ul class="terminal-list">
+                                <li><a href="https://www.linkedin.com/in/pavan-k-804612250/" class="terminal-link">LINKEDIN_PROFILE.URL</a></li>
+                                <li><a href="https://github.com/Pavan19047" class="terminal-link">GITHUB_REPOS.URL</a></li>
+                                <li><a href="mailto:pavandimpu1234@gmail.com" class="terminal-link">GMAIL_CONTACT.URL</a></li>
+                            </ul>
                         </div>
                     </div>
 
@@ -1224,12 +2412,12 @@ orcid.lnk      hackerrank.lnk
     <!-- Footer -->
     <footer class="footer">
         <div class="command-line">
-            <span class="prompt">SUKARNA@SYSTEM:~$</span>
-            <span class="command">echo "© 2025 SUKARNA JANA - ALL RIGHTS RESERVED"</span>
+            <span class="prompt">PAVAN@SYSTEM:~$</span>
+            <span class="command">echo "© 2025 PAVAN K - ALL RIGHTS RESERVED"</span>
         </div>
-        <div class="output">© 2025 SUKARNA JANA - ALL RIGHTS RESERVED</div>
+        <div class="output">© 2025 PAVAN K - ALL RIGHTS RESERVED</div>
         <div class="output">SYSTEM STATUS: OPERATIONAL | READY FOR NEW CONNECTIONS</div>
-        <div class="output">ROBOTICS_ENGINEER | BLOCKCHAIN_DEV | TECH_INNOVATOR <span class="cursor"></span></div>
+        <div class="output">MERN_STACK_DEVELOPER | AI_ENTHUSIAST | TECH_INNOVATOR <span class="cursor"></span></div>
     </footer>
 
     <script>
@@ -1238,25 +2426,86 @@ orcid.lnk      hackerrank.lnk
             document.getElementById('bootSequence').style.display = 'none';
         }, 4000);
 
-        // Matrix rain effect
+        // Enhanced Matrix rain effect
         function createMatrixRain() {
             const matrixContainer = document.getElementById('matrixRain');
-            const characters = '01234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()';
+            if (!matrixContainer) {
+                console.log('Matrix rain container not found');
+                return;
+            }
+
+            // Clear existing rain columns
+            matrixContainer.innerHTML = '';
+
+            const characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*()_+-=[]{}|;:,.<>?';
+            const columnCount = Math.floor(window.innerWidth / 20);
             
-            for (let i = 0; i < 50; i++) {
+            for (let i = 0; i < columnCount; i++) {
                 const column = document.createElement('div');
                 column.className = 'rain-column';
-                column.style.left = Math.random() * 100 + '%';
+                column.style.left = (i * (100 / columnCount)) + '%';
                 column.style.animationDuration = (Math.random() * 3 + 2) + 's';
                 column.style.animationDelay = Math.random() * 2 + 's';
                 
                 let columnText = '';
-                for (let j = 0; j < 20; j++) {
+                const textLength = Math.floor(Math.random() * 15 + 10);
+                for (let j = 0; j < textLength; j++) {
                     columnText += characters[Math.floor(Math.random() * characters.length)] + '<br>';
                 }
                 column.innerHTML = columnText;
                 
                 matrixContainer.appendChild(column);
+            }
+
+            console.log(`Matrix rain initialized with ${columnCount} columns`);
+        }
+
+        // Reinitialize matrix rain on window resize
+        function reinitializeMatrixRain() {
+            if (document.getElementById('matrixRain')) {
+                createMatrixRain();
+            }
+        }
+
+        // Add floating particles background animation
+        function createFloatingParticles() {
+            const hero = document.querySelector('.hero');
+            if (!hero) return;
+
+            // Create particles container
+            const particlesContainer = document.createElement('div');
+            particlesContainer.className = 'floating-particles';
+            particlesContainer.style.cssText = `
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                pointer-events: none;
+                z-index: 0;
+                overflow: hidden;
+            `;
+            
+            hero.style.position = 'relative';
+            hero.appendChild(particlesContainer);
+
+            // Create floating particles
+            for (let i = 0; i < 30; i++) {
+                const particle = document.createElement('div');
+                particle.style.cssText = `
+                    position: absolute;
+                    width: ${Math.random() * 4 + 2}px;
+                    height: ${Math.random() * 4 + 2}px;
+                    background: var(--terminal-green);
+                    border-radius: 50%;
+                    opacity: ${Math.random() * 0.6 + 0.2};
+                    animation: float ${Math.random() * 10 + 5}s ease-in-out infinite;
+                    animation-delay: ${Math.random() * 5}s;
+                    left: ${Math.random() * 100}%;
+                    top: ${Math.random() * 100}%;
+                    box-shadow: 0 0 6px var(--terminal-green);
+                `;
+                particlesContainer.appendChild(particle);
             }
         }
 
@@ -1304,7 +2553,7 @@ RESULT: SUCCESS <span class="cursor"></span>`;
             this.parentNode.appendChild(output);
             
             // Actually open email client
-            const mailtoLink = `mailto:contact@sukarna.tech?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
+            const mailtoLink = `mailto:pavandimpu1234@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`)}`;
             window.location.href = mailtoLink;
             
             // Reset form
@@ -1349,7 +2598,15 @@ RESULT: SUCCESS <span class="cursor"></span>`;
         });
 
         // Initialize matrix rain
-        createMatrixRain();
+        setTimeout(() => {
+            createMatrixRain();
+            createFloatingParticles();
+        }, 100);
+
+        // Reinitialize on window resize
+        window.addEventListener('resize', () => {
+            reinitializeMatrixRain();
+        });
 
         // Counter animation for stats
         const statNumbers = document.querySelectorAll('.stat-number');
@@ -1359,14 +2616,14 @@ RESULT: SUCCESS <span class="cursor"></span>`;
                     const target = entry.target;
                     const finalValue = target.textContent;
                     let currentValue = 0;
-                    const increment = finalValue === '7.97' ? 0.01 : 1;
+                    const increment = finalValue === '8.17' ? 0.01 : 1;
                     const duration = 1500;
                     const steps = duration / 30;
-                    const stepValue = finalValue === '7.97' ? parseFloat(finalValue) / steps : parseInt(finalValue) / steps;
+                    const stepValue = finalValue === '8.17' ? parseFloat(finalValue) / steps : parseInt(finalValue) / steps;
                     
                     const timer = setInterval(() => {
                         currentValue += stepValue;
-                        if (finalValue === '7.97') {
+                        if (finalValue === '8.17') {
                             target.textContent = currentValue.toFixed(2);
                             if (currentValue >= parseFloat(finalValue)) {
                                 target.textContent = finalValue;
@@ -1401,12 +2658,916 @@ RESULT: SUCCESS <span class="cursor"></span>`;
         // Console welcome message
         console.log(`
  ╔══════════════════════════════════════════════════════════════════════════════════════╗
- ║  SUKARNA TERMINAL SYSTEM v2.025 - LOADED SUCCESSFULLY                               ║
+ ║  PAVAN TERMINAL SYSTEM v2.025 - LOADED SUCCESSFULLY                                 ║
  ║  > Type 'help' for available commands                                               ║
  ║  > System Status: OPERATIONAL                                                       ║
  ║  > Ready for new connections...                                                     ║
  ╚══════════════════════════════════════════════════════════════════════════════════════╝
         `);
+
+        // ===== EXTRAORDINARY FEATURES =====
+
+        // 1. Neural Network Animation
+        function createNeuralNetwork() {
+            const container = document.getElementById('neuralNetwork');
+            const neurons = [];
+            const connections = [];
+
+            // Create neurons
+            for (let i = 0; i < 20; i++) {
+                const neuron = document.createElement('div');
+                neuron.className = 'neuron';
+                neuron.style.left = Math.random() * 100 + '%';
+                neuron.style.top = Math.random() * 100 + '%';
+                container.appendChild(neuron);
+                neurons.push(neuron);
+            }
+
+            // Create connections
+            neurons.forEach((neuron, index) => {
+                if (index < neurons.length - 1) {
+                    const connection = document.createElement('div');
+                    connection.className = 'connection';
+                    const rect1 = neuron.getBoundingClientRect();
+                    const rect2 = neurons[index + 1].getBoundingClientRect();
+                    const distance = Math.sqrt(Math.pow(rect2.left - rect1.left, 2) + Math.pow(rect2.top - rect1.top, 2));
+                    connection.style.width = distance + 'px';
+                    connection.style.left = rect1.left + 'px';
+                    connection.style.top = rect1.top + 'px';
+                    connection.style.transform = `rotate(${Math.atan2(rect2.top - rect1.top, rect2.left - rect1.left)}rad)`;
+                    container.appendChild(connection);
+                }
+            });
+        }
+
+        // 2. Floating 3D Icons
+        function createFloatingIcons() {
+            const container = document.getElementById('floatingIcons');
+            const icons = ['⚡', '🚀', '💻', '🤖', '🔧', '📊', '🌐', '🔒', '📱', '⚙️'];
+            
+            icons.forEach((icon, index) => {
+                const element = document.createElement('div');
+                element.className = 'floating-icon';
+                element.textContent = icon;
+                element.style.left = Math.random() * 100 + '%';
+                element.style.top = Math.random() * 100 + '%';
+                element.style.animationDelay = index * 0.5 + 's';
+                container.appendChild(element);
+            });
+        }
+
+        // 3. AI Assistant Functionality
+        function toggleAI() {
+            const assistant = document.getElementById('aiAssistant');
+            assistant.classList.toggle('expanded');
+        }
+
+        function handleAIInput(event) {
+            if (event.key === 'Enter') {
+                const input = event.target;
+                const command = input.value.toLowerCase().trim();
+                const chat = document.getElementById('aiChat');
+                
+                // Add user message
+                const userMsg = document.createElement('div');
+                userMsg.className = 'chat-message';
+                userMsg.textContent = `You: ${input.value}`;
+                chat.appendChild(userMsg);
+
+                // Process command
+                let response = '';
+                switch(command) {
+                    case 'help':
+                        response = 'Available commands: voice, weather, joke, time, hack, code, skills, clear';
+                        break;
+                    case 'voice':
+                        response = 'Starting voice recognition... Say "Hey PAVAN" or just speak your command.';
+                        startVoiceRecognition();
+                        break;
+                    case 'weather':
+                        response = 'Weather in Bangalore: 24°C, Partly Cloudy ☁️';
+                        break;
+                    case 'joke':
+                        const jokes = [
+                            'Why do programmers prefer dark mode? Because light attracts bugs! 🐛',
+                            'How many programmers does it take to change a light bulb? None, that\'s a hardware problem! 💡',
+                            'Why do Java developers wear glasses? Because they can\'t C# 👓',
+                            'A SQL query goes into a bar, walks up to two tables and asks: "Can I join you?" 🍺'
+                        ];
+                        response = jokes[Math.floor(Math.random() * jokes.length)];
+                        break;
+                    case 'time':
+                        response = `Current time: ${new Date().toLocaleTimeString()}`;
+                        break;
+                    case 'hack':
+                        response = 'Initiating hack mode... Access granted to mainframe 🔓';
+                        document.body.style.filter = 'hue-rotate(120deg)';
+                        setTimeout(() => {
+                            document.body.style.filter = '';
+                        }, 3000);
+                        break;
+                    case 'code':
+                        response = 'Opening live code editor...';
+                        toggleCodeEditor();
+                        break;
+                    case 'skills':
+                        response = 'Displaying skill radar... React: 95%, Node.js: 90%, AI/ML: 85%, Python: 88%';
+                        break;
+                    case 'clear':
+                        chat.innerHTML = `
+                            <div class="chat-message">System: AI Assistant Online</div>
+                            <div class="chat-message">PAVAN.AI: Chat cleared</div>
+                        `;
+                        input.value = '';
+                        return;
+                    case 'matrix':
+                        switchTheme('matrix');
+                        response = 'Matrix theme activated! Welcome to the Matrix, Neo.';
+                        break;
+                    case 'cyber':
+                        switchTheme('cyberpunk');
+                        response = 'Cyberpunk theme activated! Welcome to the future.';
+                        break;
+                    default:
+                        response = `Command "${command}" not recognized. Type "help" for available commands or "voice" to use voice recognition.`;
+                }
+
+                // Add AI response
+                const aiMsg = document.createElement('div');
+                aiMsg.className = 'chat-message';
+                aiMsg.textContent = `PAVAN.AI: ${response}`;
+                chat.appendChild(aiMsg);
+
+                input.value = '';
+                chat.scrollTop = chat.scrollHeight;
+            }
+        }
+
+        // 4. Voice Recognition - Enhanced with better browser support
+        let recognition = null;
+        let isListening = false;
+
+        function initVoiceRecognition() {
+            // Check for browser support
+            if ('SpeechRecognition' in window) {
+                recognition = new SpeechRecognition();
+            } else if ('webkitSpeechRecognition' in window) {
+                recognition = new webkitSpeechRecognition();
+            } else {
+                console.log('Speech recognition not supported');
+                return false;
+            }
+
+            if (recognition) {
+                recognition.continuous = false;
+                recognition.interimResults = false;
+                recognition.lang = 'en-US';
+                recognition.maxAlternatives = 1;
+
+                recognition.onstart = function() {
+                    isListening = true;
+                    const indicator = document.getElementById('voiceIndicator');
+                    indicator.style.display = 'block';
+                    console.log('Voice recognition started');
+                };
+
+                recognition.onresult = function(event) {
+                    isListening = false;
+                    const indicator = document.getElementById('voiceIndicator');
+                    indicator.style.display = 'none';
+                    
+                    const transcript = event.results[0][0].transcript.toLowerCase();
+                    console.log('Voice recognized:', transcript);
+                    
+                    // Add to AI chat
+                    const chat = document.getElementById('aiChat');
+                    const userMsg = document.createElement('div');
+                    userMsg.className = 'chat-message';
+                    userMsg.textContent = `🎤 Voice: ${transcript}`;
+                    chat.appendChild(userMsg);
+                    
+                    // Process voice command
+                    processVoiceCommand(transcript);
+                    chat.scrollTop = chat.scrollHeight;
+                };
+
+                recognition.onerror = function(event) {
+                    isListening = false;
+                    const indicator = document.getElementById('voiceIndicator');
+                    indicator.style.display = 'none';
+                    
+                    console.error('Voice recognition error:', event.error);
+                    
+                    const chat = document.getElementById('aiChat');
+                    const errorMsg = document.createElement('div');
+                    errorMsg.className = 'chat-message';
+                    errorMsg.style.color = 'var(--error-red)';
+                    
+                    switch(event.error) {
+                        case 'no-speech':
+                            errorMsg.textContent = 'PAVAN.AI: No speech detected. Try again.';
+                            break;
+                        case 'network':
+                            errorMsg.textContent = 'PAVAN.AI: Network error. Check connection.';
+                            break;
+                        case 'not-allowed':
+                            errorMsg.textContent = 'PAVAN.AI: Microphone access denied. Please allow microphone access.';
+                            break;
+                        default:
+                            errorMsg.textContent = `PAVAN.AI: Voice recognition error: ${event.error}`;
+                    }
+                    chat.appendChild(errorMsg);
+                    chat.scrollTop = chat.scrollHeight;
+                };
+
+                recognition.onend = function() {
+                    isListening = false;
+                    const indicator = document.getElementById('voiceIndicator');
+                    indicator.style.display = 'none';
+                    console.log('Voice recognition ended');
+                };
+
+                return true;
+            }
+            return false;
+        }
+
+        function startVoiceRecognition() {
+            if (!recognition) {
+                const chat = document.getElementById('aiChat');
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'chat-message';
+                errorMsg.style.color = 'var(--error-red)';
+                errorMsg.textContent = 'PAVAN.AI: Voice recognition not supported in this browser. Try Chrome or Edge.';
+                chat.appendChild(errorMsg);
+                return;
+            }
+
+            if (isListening) {
+                recognition.stop();
+                return;
+            }
+
+            try {
+                recognition.start();
+                
+                const chat = document.getElementById('aiChat');
+                const startMsg = document.createElement('div');
+                startMsg.className = 'chat-message';
+                startMsg.textContent = 'PAVAN.AI: Listening... Speak now!';
+                chat.appendChild(startMsg);
+                chat.scrollTop = chat.scrollHeight;
+                
+            } catch (error) {
+                console.error('Error starting voice recognition:', error);
+                const chat = document.getElementById('aiChat');
+                const errorMsg = document.createElement('div');
+                errorMsg.className = 'chat-message';
+                errorMsg.style.color = 'var(--error-red)';
+                errorMsg.textContent = 'PAVAN.AI: Failed to start voice recognition. Please try again.';
+                chat.appendChild(errorMsg);
+            }
+        }
+
+        function processVoiceCommand(transcript) {
+            const chat = document.getElementById('aiChat');
+            let response = '';
+            
+            // Remove "hey pavan" or "pavan" from the beginning
+            let command = transcript.replace(/^(hey\s+)?pavan\s+/, '').trim();
+            
+            // If no command after pavan, use the whole transcript
+            if (!command) {
+                command = transcript;
+            }
+            
+            console.log('Processing voice command:', command);
+            
+            // Process the command
+            if (command.includes('help')) {
+                response = 'Voice commands available: time, weather, joke, skills, projects, contact, theme matrix, theme cyber, clear chat';
+            } else if (command.includes('time')) {
+                response = `Current time is ${new Date().toLocaleTimeString()}`;
+            } else if (command.includes('weather')) {
+                response = 'Weather in Bangalore: 24°C, Partly Cloudy ☁️';
+            } else if (command.includes('joke')) {
+                const jokes = [
+                    'Why do programmers prefer dark mode? Because light attracts bugs! 🐛',
+                    'How many programmers does it take to change a light bulb? None, that\'s a hardware problem! 💡',
+                    'Why do Java developers wear glasses? Because they can\'t C# 👓'
+                ];
+                response = jokes[Math.floor(Math.random() * jokes.length)];
+            } else if (command.includes('skills')) {
+                response = 'My top skills: React.js 95%, Node.js 90%, Python 88%, AI/ML 85%, MongoDB 82%';
+            } else if (command.includes('projects')) {
+                response = 'Featured projects: AI Supply Chain Suite, FixitHub, FoodVision, Secure_T, KisaNet';
+            } else if (command.includes('contact')) {
+                response = 'Contact: pavandimpu1234@gmail.com | Phone: +91 7760895008';
+            } else if (command.includes('theme') && command.includes('matrix')) {
+                switchTheme('matrix');
+                response = 'Matrix theme activated! Welcome to the Matrix, Neo.';
+            } else if (command.includes('theme') && command.includes('cyber')) {
+                switchTheme('cyberpunk');
+                response = 'Cyberpunk theme activated! Welcome to the future.';
+            } else if (command.includes('clear')) {
+                document.getElementById('aiChat').innerHTML = `
+                    <div class="chat-message">System: AI Assistant Online</div>
+                    <div class="chat-message">PAVAN.AI: Chat cleared by voice command</div>
+                `;
+                response = 'Chat cleared successfully!';
+            } else {
+                response = `I heard: "${command}". Try saying "help" for available voice commands.`;
+            }
+            
+            // Add AI response
+            const aiMsg = document.createElement('div');
+            aiMsg.className = 'chat-message';
+            aiMsg.textContent = `PAVAN.AI: ${response}`;
+            chat.appendChild(aiMsg);
+            chat.scrollTop = chat.scrollHeight;
+        }
+
+        // 5. Live Code Editor - Enhanced version
+        function toggleCodeEditor() {
+            const editor = document.getElementById('codeEditor');
+            editor.classList.toggle('active');
+            
+            // If opening, focus on the textarea
+            if (editor.classList.contains('active')) {
+                setTimeout(() => {
+                    document.getElementById('codeInput').focus();
+                }, 300);
+            }
+        }
+
+        function executeCode() {
+            const code = document.getElementById('codeInput').value;
+            const outputDiv = document.getElementById('codeOutput');
+            const resultDiv = document.getElementById('codeResult');
+            
+            // Clear previous output
+            resultDiv.innerHTML = '';
+            
+            // Capture console.log output
+            const originalLog = console.log;
+            const logOutput = [];
+            console.log = function(...args) {
+                logOutput.push(args.map(arg => 
+                    typeof arg === 'object' ? JSON.stringify(arg, null, 2) : String(arg)
+                ).join(' '));
+                originalLog.apply(console, arguments);
+            };
+            
+            try {
+                // Execute the code
+                const result = eval(code);
+                
+                // Show output
+                outputDiv.style.display = 'block';
+                
+                // Display console logs
+                if (logOutput.length > 0) {
+                    resultDiv.innerHTML += '<div style="color: var(--terminal-green);">Console Output:</div>';
+                    logOutput.forEach(log => {
+                        resultDiv.innerHTML += `<div>> ${log}</div>`;
+                    });
+                }
+                
+                // Display result if any
+                if (result !== undefined) {
+                    resultDiv.innerHTML += `<div style="color: var(--terminal-amber);">Return Value: ${result}</div>`;
+                }
+                
+                if (logOutput.length === 0 && result === undefined) {
+                    resultDiv.innerHTML = '<div style="color: var(--terminal-green);">Code executed successfully! (No output)</div>';
+                }
+                
+            } catch (error) {
+                outputDiv.style.display = 'block';
+                resultDiv.innerHTML = `<div style="color: var(--error-red);">Error: ${error.message}</div>`;
+            }
+            
+            // Restore console.log
+            console.log = originalLog;
+        }
+
+        function clearCodeOutput() {
+            const outputDiv = document.getElementById('codeOutput');
+            const resultDiv = document.getElementById('codeResult');
+            const codeInput = document.getElementById('codeInput');
+            
+            // Hide output section
+            outputDiv.style.display = 'none';
+            
+            // Clear output content
+            resultDiv.innerHTML = '';
+            
+            // Clear the code input as well
+            codeInput.value = `// Welcome to the Live Code Editor!
+// Try typing some JavaScript code here:
+
+console.log('Hello from PAVAN\\'s Live Code Editor!');
+
+// Change the theme
+document.body.style.filter = 'hue-rotate(45deg)';
+
+// Create an alert
+alert('Code executed successfully!');
+
+// Access portfolio elements
+document.querySelector('.terminal-green').style.color = '#ff00ff';
+
+// Try any JavaScript you want!`;
+            
+            // Focus back to the input
+            codeInput.focus();
+            
+            // Show success message in AI chat if it's open
+            const aiChat = document.getElementById('aiChat');
+            if (aiChat && document.getElementById('aiAssistant').classList.contains('expanded')) {
+                const clearMsg = document.createElement('div');
+                clearMsg.className = 'chat-message';
+                clearMsg.textContent = 'PAVAN.AI: Code editor cleared successfully!';
+                aiChat.appendChild(clearMsg);
+                aiChat.scrollTop = aiChat.scrollHeight;
+            }
+        }
+
+        // 6. Theme Switcher - Fixed version
+        function switchTheme(theme) {
+            const body = document.body;
+            
+            // Remove all existing theme classes
+            body.classList.remove('matrix-theme', 'cyberpunk-theme', 'retro-theme');
+            
+            // Apply new theme if not default
+            if (theme !== 'default') {
+                body.classList.add(theme + '-theme');
+            }
+            
+            // Store theme preference
+            localStorage.setItem('theme', theme);
+            
+            // Update theme button states
+            const themeButtons = document.querySelectorAll('.theme-switcher .theme-btn');
+            themeButtons.forEach(btn => {
+                btn.classList.remove('active-theme');
+            });
+            
+            // Find and highlight active theme button
+            const activeButton = Array.from(themeButtons).find(btn => {
+                const btnText = btn.textContent.toLowerCase();
+                return (theme === 'default' && btnText === 'default') ||
+                       (theme === 'matrix' && btnText === 'matrix') ||
+                       (theme === 'cyberpunk' && btnText === 'cyber') ||
+                       (theme === 'retro' && btnText === 'retro');
+            });
+            
+            if (activeButton) {
+                activeButton.classList.add('active-theme');
+            }
+            
+            console.log(`Theme switched to: ${theme}`);
+        }
+
+        // 7. Interactive Terminal
+        function handleTerminalInput(event) {
+            if (event.key === 'Enter') {
+                const input = event.target;
+                const command = input.value.toLowerCase().trim();
+                const output = document.getElementById('terminalOutput');
+                
+                // Add command to output
+                const cmdDiv = document.createElement('div');
+                cmdDiv.className = 'command-line';
+                cmdDiv.innerHTML = `<span class="prompt">VISITOR@PAVAN:~$</span> <span class="command">${input.value}</span>`;
+                output.appendChild(cmdDiv);
+
+                // Process command
+                const responseDiv = document.createElement('div');
+                responseDiv.className = 'output';
+                
+                switch(command) {
+                    case 'help':
+                        responseDiv.textContent = 'Available commands: skills, projects, contact, matrix, hack, clear, whoami, date';
+                        break;
+                    case 'skills':
+                        responseDiv.innerHTML = 'MERN Stack: ████████████ 95%<br>AI/ML: ██████████ 85%<br>DevOps: ████████ 80%';
+                        break;
+                    case 'projects':
+                        responseDiv.textContent = 'AI Supply Chain Suite, FixitHub, FoodVision, Secure_T, KisaNet, Career Genie';
+                        break;
+                    case 'contact':
+                        responseDiv.textContent = 'Email: pavandimpu1234@gmail.com | Phone: +91 7760895008';
+                        break;
+                    case 'matrix':
+                        switchTheme('matrix');
+                        responseDiv.textContent = 'Matrix theme activated. Welcome to the Matrix, Neo.';
+                        break;
+                    case 'hack':
+                        responseDiv.innerHTML = 'Hacking mainframe...<br>Access granted 🔓<br>Welcome, elite hacker.';
+                        break;
+                    case 'clear':
+                        output.innerHTML = '<div class="output">Terminal cleared.</div>';
+                        input.value = '';
+                        return;
+                    case 'whoami':
+                        responseDiv.textContent = 'You are a visitor exploring PAVAN\'s digital realm.';
+                        break;
+                    case 'date':
+                        responseDiv.textContent = new Date().toString();
+                        break;
+                    default:
+                        responseDiv.textContent = `Command '${command}' not found. Type 'help' for available commands.`;
+                }
+                
+                output.appendChild(responseDiv);
+                input.value = '';
+                output.scrollTop = output.scrollHeight;
+            }
+        }
+
+        // 8. Skill Radar Chart
+        function createSkillRadar() {
+            const skills = [
+                {name: 'React.js', value: 95},
+                {name: 'Node.js', value: 90},
+                {name: 'Python', value: 88},
+                {name: 'AI/ML', value: 85},
+                {name: 'MongoDB', value: 82},
+                {name: 'DevOps', value: 78}
+            ];
+
+            const svg = document.getElementById('skillRadar');
+            const centerX = 150, centerY = 150, radius = 120;
+            
+            // Create radar grid
+            for (let i = 1; i <= 5; i++) {
+                const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                circle.setAttribute('cx', centerX);
+                circle.setAttribute('cy', centerY);
+                circle.setAttribute('r', radius * i / 5);
+                circle.setAttribute('fill', 'none');
+                circle.setAttribute('stroke', '#00ff00');
+                circle.setAttribute('stroke-opacity', '0.3');
+                svg.appendChild(circle);
+            }
+
+            // Create skill points
+            skills.forEach((skill, index) => {
+                const angle = (index * 60 - 90) * Math.PI / 180;
+                const distance = (skill.value / 100) * radius;
+                const x = centerX + distance * Math.cos(angle);
+                const y = centerY + distance * Math.sin(angle);
+                
+                const point = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+                point.setAttribute('cx', x);
+                point.setAttribute('cy', y);
+                point.setAttribute('r', '4');
+                point.setAttribute('fill', '#00ff00');
+                point.setAttribute('stroke', '#fff');
+                point.setAttribute('stroke-width', '2');
+                svg.appendChild(point);
+
+                // Add labels
+                const labelX = centerX + (radius + 20) * Math.cos(angle);
+                const labelY = centerY + (radius + 20) * Math.sin(angle);
+                const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+                text.setAttribute('x', labelX);
+                text.setAttribute('y', labelY);
+                text.setAttribute('fill', '#00ff00');
+                text.setAttribute('font-size', '12');
+                text.setAttribute('text-anchor', 'middle');
+                text.textContent = skill.name;
+                svg.appendChild(text);
+            });
+        }
+
+        // 9. Performance Metrics
+        function updatePerformanceMetrics() {
+            const metrics = document.getElementById('performanceMetrics');
+            const fps = Math.floor(60 + Math.random() * 10);
+            const memory = (12 + Math.random() * 5).toFixed(1);
+            const visitors = Math.floor(1300 + Math.random() * 100);
+            
+            document.getElementById('fps').textContent = fps;
+            document.getElementById('memory').textContent = memory + 'MB';
+            document.getElementById('visitors').textContent = visitors;
+            
+            // Show metrics on hover
+            document.addEventListener('mousemove', () => {
+                metrics.classList.add('visible');
+                setTimeout(() => metrics.classList.remove('visible'), 3000);
+            });
+        }
+
+        // 10. Easter Egg - Konami Code
+        let konamiCode = [];
+        const konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65]; // Up Up Down Down Left Right Left Right B A
+
+        document.addEventListener('keydown', (e) => {
+            konamiCode.push(e.keyCode);
+            if (konamiCode.length > konami.length) {
+                konamiCode.shift();
+            }
+            if (konamiCode.toString() === konami.toString()) {
+                document.getElementById('easterEgg').classList.add('active');
+            }
+        });
+
+        function closeEasterEgg() {
+            document.getElementById('easterEgg').classList.remove('active');
+        }
+
+        // 11. GitHub Stats (Mock data - replace with actual API)
+        function loadGitHubStats() {
+            // Simulate API call
+            setTimeout(() => {
+                document.querySelector('#repoCount .stat-number').textContent = '25+';
+                document.querySelector('#followerCount .stat-number').textContent = '150+';
+            }, 2000);
+        }
+
+        // Initialize all features
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize voice recognition
+            const voiceSupported = initVoiceRecognition();
+            console.log('Voice recognition supported:', voiceSupported);
+            
+            // Update AI chat with voice status
+            const chat = document.getElementById('aiChat');
+            if (!voiceSupported) {
+                const statusMsg = document.createElement('div');
+                statusMsg.className = 'chat-message';
+                statusMsg.style.color = 'var(--warning-yellow)';
+                statusMsg.textContent = 'Note: Voice recognition requires Chrome/Edge and microphone permission';
+                chat.appendChild(statusMsg);
+            }
+            
+            createNeuralNetwork();
+            createFloatingIcons();
+            createSkillRadar();
+            updatePerformanceMetrics();
+            loadGitHubStats();
+            
+            // Initialize background animations for home section
+            setTimeout(() => {
+                createMatrixRain();
+                createFloatingParticles();
+                console.log('Background animations initialized');
+            }, 200);
+            
+            // Load saved theme
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme && savedTheme !== 'default') {
+                switchTheme(savedTheme);
+            }
+
+            // Add keyboard shortcuts
+            document.addEventListener('keydown', (e) => {
+                // Ctrl + Shift + V for voice
+                if (e.ctrlKey && e.shiftKey && e.key === 'V') {
+                    e.preventDefault();
+                    startVoiceRecognition();
+                }
+                // Ctrl + Shift + A for AI
+                if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+                    e.preventDefault();
+                    toggleAI();
+                }
+                // Ctrl + Shift + C for Code Editor
+                if (e.ctrlKey && e.shiftKey && e.key === 'C') {
+                    e.preventDefault();
+                    toggleCodeEditor();
+                }
+                // Ctrl + Enter to execute code (when code editor is focused)
+                if (e.ctrlKey && e.key === 'Enter' && document.activeElement.id === 'codeInput') {
+                    e.preventDefault();
+                    executeCode();
+                }
+                // Ctrl + Shift + L to clear code editor
+                if (e.ctrlKey && e.shiftKey && e.key === 'L' && document.getElementById('codeEditor').classList.contains('active')) {
+                    e.preventDefault();
+                    clearCodeOutput();
+                }
+            });
+        });
+
+        // Loading Screen System - Fixed Version
+        class LoadingScreen {
+            constructor() {
+                this.particles = [];
+                this.canvas = null;
+                this.ctx = null;
+                this.progress = 0;
+                this.loadingSteps = [
+                    'Initializing Neural Network...',
+                    'Loading AI Modules...',
+                    'Calibrating System Performance...',
+                    'Establishing Secure Connections...',
+                    'Optimizing User Interface...',
+                    'Loading Portfolio Assets...',
+                    'Finalizing Experience...',
+                    'System Ready!'
+                ];
+                this.currentStep = 0;
+            }
+
+            init() {
+                this.canvas = document.getElementById('particleCanvas');
+                if (this.canvas) {
+                    this.ctx = this.canvas.getContext('2d');
+                    this.resizeCanvas();
+                    this.createParticles();
+                    this.animate();
+                    
+                    window.addEventListener('resize', () => this.resizeCanvas());
+                }
+                
+                this.startLoading();
+            }
+
+            resizeCanvas() {
+                if (this.canvas) {
+                    this.canvas.width = window.innerWidth;
+                    this.canvas.height = window.innerHeight;
+                }
+            }
+
+            createParticles() {
+                if (!this.canvas) return;
+                
+                const particleCount = Math.min(60, Math.floor(window.innerWidth / 20));
+                for (let i = 0; i < particleCount; i++) {
+                    this.particles.push({
+                        x: Math.random() * this.canvas.width,
+                        y: Math.random() * this.canvas.height,
+                        vx: (Math.random() - 0.5) * 1,
+                        vy: (Math.random() - 0.5) * 1,
+                        size: Math.random() * 2 + 1,
+                        opacity: Math.random() * 0.6 + 0.2,
+                        color: Math.random() > 0.6 ? '#00ff41' : '#ff6b35'
+                    });
+                }
+            }
+
+            animate() {
+                if (!this.ctx || !this.canvas) return;
+                
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                // Update and draw particles
+                this.particles.forEach(particle => {
+                    particle.x += particle.vx;
+                    particle.y += particle.vy;
+                    
+                    // Bounce off edges
+                    if (particle.x <= 0 || particle.x >= this.canvas.width) particle.vx *= -1;
+                    if (particle.y <= 0 || particle.y >= this.canvas.height) particle.vy *= -1;
+                    
+                    // Draw particle
+                    this.ctx.beginPath();
+                    this.ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
+                    this.ctx.fillStyle = particle.color;
+                    this.ctx.globalAlpha = particle.opacity;
+                    this.ctx.fill();
+                });
+                
+                // Draw connections between nearby particles
+                this.ctx.globalAlpha = 0.15;
+                this.ctx.strokeStyle = '#00ff41';
+                this.ctx.lineWidth = 0.5;
+                
+                for (let i = 0; i < this.particles.length; i++) {
+                    for (let j = i + 1; j < this.particles.length; j++) {
+                        const dx = this.particles[i].x - this.particles[j].x;
+                        const dy = this.particles[i].y - this.particles[j].y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
+                        
+                        if (distance < 100) {
+                            this.ctx.beginPath();
+                            this.ctx.moveTo(this.particles[i].x, this.particles[i].y);
+                            this.ctx.lineTo(this.particles[j].x, this.particles[j].y);
+                            this.ctx.stroke();
+                        }
+                    }
+                }
+                
+                this.ctx.globalAlpha = 1;
+                requestAnimationFrame(() => this.animate());
+            }
+
+            startLoading() {
+                const progressBar = document.querySelector('.loading-progress');
+                const progressText = document.querySelector('.loading-progress-text');
+                const statusText = document.querySelector('.loading-status');
+                
+                // If elements don't exist, create a fallback loading mechanism
+                if (!progressBar && !progressText && !statusText) {
+                    console.log('Loading elements not found, using fallback...');
+                    setTimeout(() => this.completeLoading(), 3000);
+                    return;
+                }
+                
+                const updateProgress = () => {
+                    if (this.progress >= 100) {
+                        setTimeout(() => this.completeLoading(), 1000);
+                        return;
+                    }
+                    
+                    // Realistic loading progression
+                    this.progress += Math.random() * 5 + 2;
+                    if (this.progress > 100) this.progress = 100;
+                    
+                    // Update progress bar - try different selectors
+                    const progressElement = progressBar || document.querySelector('.loading-bar');
+                    if (progressElement) {
+                        if (progressElement.classList.contains('loading-progress')) {
+                            progressElement.style.setProperty('--progress', this.progress + '%');
+                        } else {
+                            progressElement.style.width = this.progress + '%';
+                        }
+                    }
+                    
+                    // Update progress percentage
+                    if (progressText) {
+                        progressText.textContent = Math.floor(this.progress) + '%';
+                    }
+                    
+                    // Update status text based on progress
+                    if (statusText && this.currentStep < this.loadingSteps.length) {
+                        const stepProgress = this.progress / (100 / this.loadingSteps.length);
+                        const newStep = Math.floor(stepProgress);
+                        if (newStep > this.currentStep && newStep < this.loadingSteps.length) {
+                            this.currentStep = newStep;
+                            statusText.innerHTML = this.loadingSteps[this.currentStep] + '<span class="loading-dots"></span>';
+                        }
+                    }
+                    
+                    // Variable timing for realistic feel
+                    setTimeout(updateProgress, Math.random() * 200 + 100);
+                };
+                
+                // Start loading after a brief delay
+                setTimeout(updateProgress, 500);
+            }
+
+            completeLoading() {
+                const loadingScreen = document.getElementById('loadingScreen');
+                const statusText = document.querySelector('.loading-status');
+                
+                if (statusText) {
+                    statusText.innerHTML = 'Welcome to the Experience! <span class="loading-dots"></span>';
+                    statusText.style.color = '#00ff41';
+                }
+                
+                setTimeout(() => {
+                    if (loadingScreen) {
+                        loadingScreen.style.opacity = '0';
+                        loadingScreen.style.transition = 'opacity 1.5s ease-out';
+                        setTimeout(() => {
+                            loadingScreen.style.display = 'none';
+                            document.body.style.overflow = 'auto';
+                        }, 1500);
+                    }
+                }, 1000);
+            }
+        }
+
+        // Skip loading function
+        function skipLoading() {
+            const loadingScreen = document.getElementById('loadingScreen');
+            if (loadingScreen) {
+                loadingScreen.style.opacity = '0';
+                loadingScreen.style.transition = 'opacity 0.5s ease-out';
+                setTimeout(() => {
+                    loadingScreen.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }, 500);
+            }
+        }
+
+        // Initialize loading screen with multiple fallbacks
+        function initializeLoadingScreen() {
+            const loadingScreen = new LoadingScreen();
+            loadingScreen.init();
+            
+            // Failsafe: Force complete loading after 8 seconds
+            setTimeout(() => {
+                const screenElement = document.getElementById('loadingScreen');
+                if (screenElement && screenElement.style.display !== 'none') {
+                    console.log('Auto-completing loading screen...');
+                    skipLoading();
+                }
+            }, 8000);
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializeLoadingScreen);
+        } else {
+            initializeLoadingScreen();
+        }
     </script>
 </body>
 </html>
